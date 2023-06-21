@@ -1,5 +1,6 @@
 package io.billie.organisations.resource
 
+import io.billie.organisations.data.UnableToFindCity
 import io.billie.organisations.data.UnableToFindCountry
 import io.billie.organisations.service.OrganisationService
 import io.billie.organisations.viewmodel.*
@@ -41,8 +42,15 @@ class OrganisationResource(val service: OrganisationService) {
         try {
             val id = service.createOrganisation(organisation)
             return Entity(id)
-        } catch (e: UnableToFindCountry) {
-            throw ResponseStatusException(BAD_REQUEST, e.message)
+        } catch (e: Exception) {
+            when (e) {
+                is UnableToFindCountry, is UnableToFindCity -> {
+                    throw ResponseStatusException(BAD_REQUEST, e.message)
+                }
+
+                else -> throw e
+            }
+
         }
     }
 

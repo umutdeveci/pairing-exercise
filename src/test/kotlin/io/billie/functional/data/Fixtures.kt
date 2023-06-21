@@ -17,7 +17,15 @@ object Fixtures {
                 "  \"contact_details\": {\n" +
                 "    \"phone_number\": \"+443700100222\",\n" +
                 "    \"fax\": \"\",\n" +
-                "    \"email\": \"yourquestions@bbc.co.uk\"\n" +
+                "    \"email\": \"yourquestions@bbc.co.uk\",\n" +
+                "    \"address\": {\n" +
+                "       \"street\": \"Television Centre\",\n" +
+                "       \"house_number\": \"1\",\n" +
+                "       \"additional\": \"additional\",\n" +
+                "       \"zip_code\": \"W12 7FA\",\n" +
+                "       \"city\": \"London\",\n" +
+                "       \"country_code\": \"GB\"\n" +
+                "     }\n" +
                 "  }\n" +
                 "}"
     }
@@ -32,7 +40,15 @@ object Fixtures {
                 "  \"contact_details\": {\n" +
                 "    \"phone_number\": \"+443700100222\",\n" +
                 "    \"fax\": \"\",\n" +
-                "    \"email\": \"yourquestions@bbc.co.uk\"\n" +
+                "    \"email\": \"yourquestions@bbc.co.uk\",\n" +
+                "    \"address\": {\n" +
+                "       \"street\": \"Television Centre\",\n" +
+                "       \"house_number\": \"1\",\n" +
+                "       \"additional\": \"additional\",\n" +
+                "       \"zip_code\": \"W12 7FA\",\n" +
+                "       \"city\": \"London\",\n" +
+                "       \"country_code\": \"GB\"\n" +
+                "     }\n" +
                 "  }\n" +
                 "}"
     }
@@ -47,7 +63,15 @@ object Fixtures {
                 "  \"contact_details\": {\n" +
                 "    \"phone_number\": \"+443700100222\",\n" +
                 "    \"fax\": \"\",\n" +
-                "    \"email\": \"yourquestions@bbc.co.uk\"\n" +
+                "    \"email\": \"yourquestions@bbc.co.uk\",\n" +
+                "    \"address\": {\n" +
+                "       \"street\": \"Television Centre\",\n" +
+                "       \"house_number\": \"1\",\n" +
+                "       \"additional\": \"additional\",\n" +
+                "       \"zip_code\": \"W12 7FA\",\n" +
+                "       \"city\": \"London\",\n" +
+                "       \"country_code\": \"GB\"\n" +
+                "     }\n" +
                 "  }\n" +
                 "}"
     }
@@ -74,7 +98,15 @@ object Fixtures {
                 "  \"contact_details\": {\n" +
                 "    \"phone_number\": \"+443700100222\",\n" +
                 "    \"fax\": \"\",\n" +
-                "    \"email\": \"yourquestions@bbc.co.uk\"\n" +
+                "    \"email\": \"yourquestions@bbc.co.uk\",\n" +
+                "    \"address\": {\n" +
+                "       \"street\": \"Television Centre\",\n" +
+                "       \"house_number\": \"1\",\n" +
+                "       \"additional\": \"additional\",\n" +
+                "       \"zip_code\": \"W12 7FA\",\n" +
+                "       \"city\": \"London\",\n" +
+                "       \"country_code\": \"GB\"\n" +
+                "     }\n" +
                 "  }\n" +
                 "}"
     }
@@ -90,7 +122,15 @@ object Fixtures {
                 "  \"contact_details\": {\n" +
                 "    \"phone_number\": \"+443700100222\",\n" +
                 "    \"fax\": \"\",\n" +
-                "    \"email\": \"yourquestions@bbc.co.uk\"\n" +
+                "    \"email\": \"yourquestions@bbc.co.uk\",\n" +
+                "    \"address\": {\n" +
+                "       \"street\": \"Television Centre\",\n" +
+                "       \"house_number\": \"1\",\n" +
+                "       \"additional\": \"additional\",\n" +
+                "       \"zip_code\": \"W12 7FA\",\n" +
+                "       \"city\": \"London\",\n" +
+                "       \"country_code\": \"GB\"\n" +
+                "     }\n" +
                 "  }\n" +
                 "}"
     }
@@ -105,7 +145,15 @@ object Fixtures {
                 "  \"contact_details\": {\n" +
                 "    \"phone_number\": \"+443700100222\",\n" +
                 "    \"fax\": \"\",\n" +
-                "    \"email\": \"yourquestions@bbc.co.uk\"\n" +
+                "    \"email\": \"yourquestions@bbc.co.uk\",\n" +
+                "    \"address\": {\n" +
+                "       \"street\": \"Television Centre\",\n" +
+                "       \"house_number\": \"1\",\n" +
+                "       \"additional\": \"additional\",\n" +
+                "       \"zip_code\": \"W12 7FA\",\n" +
+                "       \"city\": \"London\",\n" +
+                "       \"country_code\": \"GB\"\n" +
+                "     }\n" +
                 "  }\n" +
                 "}"
     }
@@ -121,7 +169,79 @@ object Fixtures {
                 "  \"contact_details\": {\n" +
                 "    \"phone_number\": \"+443700100222\",\n" +
                 "    \"fax\": \"\",\n" +
+                "    \"email\": \"yourquestions@bbc.co.uk\",\n" +
+                "    \"address\": {\n" +
+                "       \"street\": \"Television Centre\",\n" +
+                "       \"house_number\": \"1\",\n" +
+                "       \"additional\": \"additional\",\n" +
+                "       \"zip_code\": \"W12 7FA\",\n" +
+                "       \"city\": \"London\",\n" +
+                "       \"country_code\": \"GB\"\n" +
+                "     }\n" +
+                "  }\n" +
+                "}"
+    }
+
+    fun orgRequestJsonAddressMissing(): String {
+        return "{\n" +
+                "  \"name\": \"BBC\",\n" +
+                "  \"date_founded\": \"18/10/1922\",\n" +
+                "  \"country_code\": \"GB\",\n" +
+                "  \"vat_number\": \"333289454\",\n" +
+                "  \"registration_number\": \"3686147\",\n" +
+                "  \"legal_entity_type\": \"NONPROFIT_ORGANIZATION\",\n" +
+                "  \"contact_details\": {\n" +
+                "    \"phone_number\": \"+443700100222\",\n" +
+                "    \"fax\": \"\",\n" +
                 "    \"email\": \"yourquestions@bbc.co.uk\"\n" +
+                "  }\n" +
+                "}"
+    }
+
+    fun orgRequestJsonAddressCityInvalid(): String {
+        return "{\n" +
+                "  \"name\": \"BBC\",\n" +
+                "  \"date_founded\": \"18/10/1922\",\n" +
+                "  \"country_code\": \"GB\",\n" +
+                "  \"vat_number\": \"333289454\",\n" +
+                "  \"registration_number\": \"3686147\",\n" +
+                "  \"legal_entity_type\": \"NONPROFIT_ORGANIZATION\",\n" +
+                "  \"contact_details\": {\n" +
+                "    \"phone_number\": \"+443700100222\",\n" +
+                "    \"fax\": \"\",\n" +
+                "    \"email\": \"yourquestions@bbc.co.uk\",\n" +
+                "    \"address\": {\n" +
+                "       \"street\": \"Television Centre\",\n" +
+                "       \"house_number\": \"1\",\n" +
+                "       \"additional\": \"additional\",\n" +
+                "       \"zip_code\": \"W12 7FA\",\n" +
+                "       \"city\": \"does_not_exist\",\n" +
+                "       \"country_code\": \"GB\"\n" +
+                "     }\n" +
+                "  }\n" +
+                "}"
+    }
+
+    fun orgRequestJsonAddressCountryCodeInvalid(): String {
+        return "{\n" +
+                "  \"name\": \"BBC\",\n" +
+                "  \"date_founded\": \"18/10/1922\",\n" +
+                "  \"country_code\": \"GB\",\n" +
+                "  \"vat_number\": \"333289454\",\n" +
+                "  \"registration_number\": \"3686147\",\n" +
+                "  \"legal_entity_type\": \"NONPROFIT_ORGANIZATION\",\n" +
+                "  \"contact_details\": {\n" +
+                "    \"phone_number\": \"+443700100222\",\n" +
+                "    \"fax\": \"\",\n" +
+                "    \"email\": \"yourquestions@bbc.co.uk\",\n" +
+                "    \"address\": {\n" +
+                "       \"street\": \"Television Centre\",\n" +
+                "       \"house_number\": \"1\",\n" +
+                "       \"additional\": \"additional\",\n" +
+                "       \"zip_code\": \"W12 7FA\",\n" +
+                "       \"city\": \"London\",\n" +
+                "       \"country_code\": \"DE\"\n" +
+                "     }\n" +
                 "  }\n" +
                 "}"
     }
@@ -147,6 +267,17 @@ object Fixtures {
         return data
     }
 
+    fun bbcAddressFixture(id: UUID): Map<String, Any> {
+        val data = HashMap<String, Any>()
+        data["id"] = id
+        data["street"] = "Television Centre"
+        data["house_number"] = "1"
+        data["additional"] = "additional"
+        data["zip_code"] = "W12 7FA"
+        data["city"] = "London"
+        data["country_code"] = "GB"
+        return data
+    }
 
 
 }
