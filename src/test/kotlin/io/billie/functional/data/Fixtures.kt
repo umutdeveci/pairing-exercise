@@ -278,6 +278,4 @@ object Fixtures {
         data["country_code"] = "GB"
         return data
     }
-
-
 }
