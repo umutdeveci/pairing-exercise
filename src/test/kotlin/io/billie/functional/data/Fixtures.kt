@@ -246,6 +246,64 @@ object Fixtures {
                 "}"
     }
 
+    fun updateContactDetailsRequest(): String {
+        return "{\n" +
+                "   \"phone_number\": \"+443700100222\",\n" +
+                "   \"fax\": \"\",\n" +
+                "   \"email\": \"yourquestions@bbc.co.uk\",\n" +
+                "   \"address\": {\n" +
+                "       \"street\": \"Television Centre\",\n" +
+                "       \"house_number\": \"1\",\n" +
+                "       \"additional\": \"additional\",\n" +
+                "       \"zip_code\": \"W12 7FA\",\n" +
+                "       \"city\": \"London\",\n" +
+                "       \"country_code\": \"GB\"\n" +
+                "   }\n" +
+                "}"
+    }
+
+    fun updateContactDetailsRequestMissingAddress(): String {
+        return "{\n" +
+                "   \"phone_number\": \"+443700100222\",\n" +
+                "   \"fax\": \"\",\n" +
+                "   \"email\": \"yourquestions@bbc.co.uk\"\n" +
+                "}"
+    }
+
+    fun updateContactDetailsRequestInvalidCity(): String {
+        return "{\n" +
+                "   \"phone_number\": \"+443700100222\",\n" +
+                "   \"fax\": \"\",\n" +
+                "   \"email\": \"yourquestions@bbc.co.uk\",\n" +
+                "   \"address\": {\n" +
+                "       \"street\": \"Television Centre\",\n" +
+                "       \"house_number\": \"1\",\n" +
+                "       \"additional\": \"additional\",\n" +
+                "       \"zip_code\": \"W12 7FA\",\n" +
+                "       \"city\": \"does_not_exist\",\n" +
+                "       \"country_code\": \"GB\"\n" +
+                "   }\n" +
+                "}"
+    }
+
+
+    fun updateContactDetailsRequestInvalidCountryCode(): String {
+        return "{\n" +
+                "   \"phone_number\": \"+443700100222\",\n" +
+                "   \"fax\": \"\",\n" +
+                "   \"email\": \"yourquestions@bbc.co.uk\",\n" +
+                "   \"address\": {\n" +
+                "       \"street\": \"Television Centre\",\n" +
+                "       \"house_number\": \"1\",\n" +
+                "       \"additional\": \"additional\",\n" +
+                "       \"zip_code\": \"W12 7FA\",\n" +
+                "       \"city\": \"London\",\n" +
+                "       \"country_code\": \"DE\"\n" +
+                "   }\n" +
+                "}"
+    }
+
+
     fun bbcFixture(id: UUID): Map<String, Any> {
         val data = HashMap<String, Any>()
         data["id"] = id

@@ -34,12 +34,52 @@ class OrganisationRepository {
         return createOrganisation(organisation, id)
     }
 
-    private fun validate(organisation: OrganisationRequest) {
-        if(!countryCodeExists(organisation.countryCode)) {
-            throw UnableToFindCountry(organisation.countryCode)
+    /**
+     * Returns newly created contact details UUID
+     */
+    @Transactional
+    fun updateContactDetails(id: UUID, contactDetails: ContactDetailsRequest): UUID {
+        validateAddress(contactDetails.address)
+
+        if(!organisationExists(id)) {
+            throw UnableToFindOrganisation(id)
         }
 
-        val address: AddressRequest = organisation.contactDetails.address
+        val contactDetailsId: UUID = createContactDetails(contactDetails)
+
+        jdbcTemplate.update(
+            "UPDATE organisations_schema.organisations o SET contact_details_id = ? WHERE id = ?",
+            contactDetailsId,
+            id
+        )
+
+        return contactDetailsId
+    }
+
+    private fun organisationExists(id: UUID): Boolean {
+        val reply: Int? = jdbcTemplate.query(
+            "select count(1) from organisations_schema.organisations o WHERE o.id = ?",
+            ResultSetExtractor {
+                it.next()
+                it.getInt(1)
+            },
+            id
+        )
+        return (reply != null) && (reply > 0)
+    }
+
+    private fun validate(organisation: OrganisationRequest) {
+        validateCountryCode(organisation.countryCode)
+        validateAddress(organisation.contactDetails.address)
+    }
+
+    private fun validateCountryCode(countryCode: String) {
+        if(!countryCodeExists(countryCode)) {
+            throw UnableToFindCountry(countryCode)
+        }
+    }
+
+    private fun validateAddress(address: AddressRequest) {
         if(!cityExists(address.city, address.countryCode)) {
             throw UnableToFindCity(address.city)
         }

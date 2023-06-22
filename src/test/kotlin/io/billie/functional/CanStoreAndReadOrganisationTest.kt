@@ -1,6 +1,9 @@
 package io.billie.functional
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import io.billie.functional.utils.DbUtils.addressFromDatabase
+import io.billie.functional.utils.DbUtils.contactDetailsFromDatabase
+import io.billie.functional.utils.DbUtils.orgFromDatabase
 import io.billie.functional.data.Fixtures.bbcAddressFixture
 import io.billie.functional.data.Fixtures.bbcContactFixture
 import io.billie.functional.data.Fixtures.bbcFixture
@@ -15,9 +18,8 @@ import io.billie.functional.data.Fixtures.orgRequestJsonNameBlank
 import io.billie.functional.data.Fixtures.orgRequestJsonNoContactDetails
 import io.billie.functional.data.Fixtures.orgRequestJsonNoCountryCode
 import io.billie.functional.data.Fixtures.orgRequestJsonNoLegalEntityType
+import io.billie.functional.utils.Utils.assertDataMatches
 import io.billie.organisations.viewmodel.Entity
-import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.core.IsEqual.equalTo
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -148,34 +150,15 @@ class CanStoreAndReadOrganisationTest {
 
         val response = mapper.readValue(result.response.contentAsString, Entity::class.java)
 
-        val org: Map<String, Any> = orgFromDatabase(response.id)
+        val org: Map<String, Any> = orgFromDatabase(template, response.id)
         assertDataMatches(org, bbcFixture(response.id))
 
         val contactDetailsId: UUID = UUID.fromString(org["contact_details_id"] as String)
-        val contactDetails: Map<String, Any> = contactDetailsFromDatabase(contactDetailsId)
+        val contactDetails: Map<String, Any> = contactDetailsFromDatabase(template, contactDetailsId)
         assertDataMatches(contactDetails, bbcContactFixture(contactDetailsId))
 
         val addressId: UUID =  UUID.fromString(contactDetails["address_id"] as String)
-        val addressDetails: Map<String, Any> = addressFromDatabase(addressId)
+        val addressDetails: Map<String, Any> = addressFromDatabase(template, addressId)
         assertDataMatches(addressDetails, bbcAddressFixture(addressId))
     }
-
-    fun assertDataMatches(reply: Map<String, Any>, assertions: Map<String, Any>) {
-        for (key in assertions.keys) {
-            assertThat(reply[key], equalTo(assertions[key]))
-        }
-    }
-
-    private fun queryEntityFromDatabase(sql: String, id: UUID): MutableMap<String, Any> =
-        template.queryForMap(sql, id)
-
-    private fun orgFromDatabase(id: UUID): MutableMap<String, Any> =
-        queryEntityFromDatabase("select * from organisations_schema.organisations where id = ?", id)
-
-    private fun contactDetailsFromDatabase(id: UUID): MutableMap<String, Any> =
-        queryEntityFromDatabase("select * from organisations_schema.contact_details where id = ?", id)
-
-    private fun addressFromDatabase(id: UUID): MutableMap<String, Any> =
-        queryEntityFromDatabase("select * from organisations_schema.addresses where id = ?", id)
-
 }
